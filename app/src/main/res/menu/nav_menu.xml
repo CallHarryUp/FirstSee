@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cache"
+            android:icon="@mipmap/cache"
+            android:title="清除缓存" />
+        <item
+            android:id="@+id/nav_mode"
+            android:icon="@mipmap/mode"
+            android:title="夜间模式" />
+        <item
+
+            android:id="@+id/nav_callme"
+            android:icon="@mipmap/call"
+            android:title="联系我哦" />
+
+
+    </group>
+</menu>
