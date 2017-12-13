@@ -12,27 +12,19 @@ import com.wen_wen.firstsee.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListenChildFragment extends BaseFragment {
+public class SeeChildFragment extends Fragment {
 
 
-    public ListenChildFragment() {
+    public SeeChildFragment() {
         // Required empty public constructor
     }
 
-    public static ListenChildFragment getnstance(String type) {
-        ListenChildFragment fragment = new ListenChildFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("type", type);
-        fragment.setArguments(bundle);
-        return fragment;
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listen_child, container, false);
+        return inflater.inflate(R.layout.fragment_see_child, container, false);
     }
 
 }
