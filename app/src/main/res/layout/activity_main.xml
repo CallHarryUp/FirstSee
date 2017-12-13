@@ -16,12 +16,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:clickable="true">
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -45,7 +40,6 @@
                         android:textSize="20sp" />
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
 
             <FrameLayout
                 android:id="@+id/main_fgt_continer"
