@@ -16,28 +16,28 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-                <RelativeLayout
-                    android:background="#FFFFFF"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#FFFFFF">
 
-                    <ImageView
-                        android:id="@+id/main_meun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:clickable="true"
-                        android:src="@mipmap/meun" />
+                <ImageView
+                    android:id="@+id/main_meun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:src="@mipmap/meun" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:text="一见"
-                        android:textColor="#707070"
-                        android:textSize="20sp" />
-                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="一见"
+                    android:textColor="#707070"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
 
             <FrameLayout
@@ -49,17 +49,18 @@
 
 
         <android.support.v7.widget.CardView
+            android:id="@+id/main_card"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="bottom"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+           >
 
             <LinearLayout
-                android:paddingTop="2dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="2dp">
 
                 <LinearLayout
                     android:id="@+id/main_listen"
@@ -70,13 +71,16 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/main_listen_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@mipmap/listen" />
+                        android:src="@mipmap/listen_press" />
 
                     <TextView
+                        android:id="@+id/main_listen_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="#333333"
                         android:text="百闻"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -90,11 +94,14 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/main_link_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@mipmap/link" />
 
                     <TextView
+                        android:textColor="#707070"
+                        android:id="@+id/main_link_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="不如"
@@ -110,11 +117,14 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/main_see_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@mipmap/see" />
 
                     <TextView
+                        android:textColor="#707007"
+                        android:id="@+id/mian_see_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="一见"

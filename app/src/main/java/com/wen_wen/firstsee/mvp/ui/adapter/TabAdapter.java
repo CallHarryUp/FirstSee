@@ -3,7 +3,6 @@ package com.wen_wen.firstsee.mvp.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import com.wen_wen.firstsee.mvp.ui.fragment.LinkChildFragment;
 import com.wen_wen.firstsee.mvp.ui.fragment.SeeChildFragment;
@@ -33,13 +32,13 @@ public class TabAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (bottomTab.equals("listen")) {
-            Log.d("111","执行 listen");
+
             return getnstance(tabList.get(position));
         } else if (bottomTab.equals("link")) {
-            Log.d("111","执行  link");
+
             return LinkChildFragment.getInstance(tabList.get(position));
         } else {
-            Log.d("111","执行 see");
+
             return SeeChildFragment.getInstance(seeTypeList.get(position));
         }
 

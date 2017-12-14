@@ -18,6 +18,7 @@ import com.wen_wen.firstsee.R;
 import com.wen_wen.firstsee.mvp.model.e.bean.SeeEntity;
 import com.wen_wen.firstsee.mvp.presenter.impl.SeePresenter;
 import com.wen_wen.firstsee.mvp.ui.adapter.SeeAdapter;
+import com.wen_wen.firstsee.mvp.ui.callback.OnScrollYListener;
 import com.wen_wen.firstsee.mvp.ui.view.IseeView;
 
 import java.util.ArrayList;
@@ -43,6 +44,10 @@ public class SeeChildFragment extends Fragment implements IseeView {
     private SeeAdapter adapter;
     private boolean isRefresh = false;
 
+
+    private OnScrollYListener listener;
+    private int totalY=0;
+
     public SeeChildFragment() {
 
     }
@@ -63,6 +68,8 @@ public class SeeChildFragment extends Fragment implements IseeView {
         if (getArguments() != null) {
             type = getArguments().getString("type");
         }
+        //获取监听者
+        listener = (OnScrollYListener) getActivity();
     }
 
     @Override
@@ -92,7 +99,7 @@ public class SeeChildFragment extends Fragment implements IseeView {
         seeRecycler.setItemAnimator(new DefaultItemAnimator());
         adapter = new SeeAdapter(getContext());
         seeRecycler.setAdapter(adapter);
-        seeSwipe.setColorSchemeColors(Color.parseColor("#707070"));
+        seeSwipe.setColorSchemeColors(Color.parseColor("#333333"));
         //下拉刷新
         seeSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -118,6 +125,10 @@ public class SeeChildFragment extends Fragment implements IseeView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+               // Log.d("111", "滑动：" + "dx:" + dx + "  ,dy" + dy);
+
+                totalY += dy;
+                listener.onScrollY(totalY);
                 LinearLayoutManager layoutManager = (LinearLayoutManager) seeRecycler.getLayoutManager();
                 lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
                 adapter.getItemCount();
@@ -127,8 +138,8 @@ public class SeeChildFragment extends Fragment implements IseeView {
         adapter.setOnItemClickListenr(new SeeAdapter.onItemClickListenr() {
             @Override
             public void onItemClick(int positon, View view) {
-                Log.d("111","跳转到一见详情");
-               // Snackbar.make(this,"跳转到一见详情",Snackbar.LENGTH_SHORT).show();
+                Log.d("111", "跳转到一见详情");
+                // Snackbar.make(this,"跳转到一见详情",Snackbar.LENGTH_SHORT).show();
             }
         });
     }
@@ -163,4 +174,6 @@ public class SeeChildFragment extends Fragment implements IseeView {
     public void OnError(Throwable throwable) {
 
     }
+
+
 }
