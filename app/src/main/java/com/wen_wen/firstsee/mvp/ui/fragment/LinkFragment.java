@@ -64,7 +64,7 @@ public class LinkFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList);
+        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList,"link");
         linkPager.setAdapter(adapter);
         linkTab.setupWithViewPager(linkPager);
 

@@ -58,7 +58,7 @@ public class SeeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList);
+        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList,"see");
         seePager.setAdapter(adapter);
         seeTab.setupWithViewPager(seePager);
     }

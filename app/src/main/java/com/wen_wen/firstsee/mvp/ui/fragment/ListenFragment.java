@@ -64,7 +64,7 @@ public class ListenFragment extends BaseFragment {
 
     private void initView() {
         listenTab.setTabMode(TabLayout.MODE_FIXED);
-        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList);
+        TabAdapter adapter = new TabAdapter(getFragmentManager(), tabList, "listen");
         listenPager.setAdapter(adapter);
         listenTab.setupWithViewPager(listenPager);
     }
