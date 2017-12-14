@@ -17,6 +17,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:layout_gravity="center_vertical"
             android:id="@+id/see_item_iv"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -24,6 +25,9 @@
             android:scaleType="centerCrop" />
 
         <LinearLayout
+
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

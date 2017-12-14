@@ -20,7 +20,7 @@ public interface Service {
 
 
     @GET("{type}")
-    Call<ResponseBody> loadAlbums(@Path("type") String type, @Query("page") String page);
+    Call<ResponseBody> loadSee(@Path("type") String type, @Query("page") String page);
 
     // 美图美句子
     @GET
