@@ -143,7 +143,6 @@ public class SeeChildFragment extends Fragment implements IseeView {
             }
         });
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -172,8 +171,7 @@ public class SeeChildFragment extends Fragment implements IseeView {
 
     @Override
     public void OnError(Throwable throwable) {
-
+        seeSwipe.setRefreshing(false);
     }
-
 
 }

@@ -158,5 +158,7 @@ public class MainActivity extends BaseActivity implements OnScrollYListener {
     @Override
     public void onScrollY(int totalY) {// 如果lateetY 大于totalY 说明是下滑
         //另一种实现思路 我们只判断recyclerView是上滑 还是下滑  如果是上滑执行上滑的动画 如果是下滑执行下滑的动画
+
+
     }
 }

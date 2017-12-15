@@ -2,11 +2,11 @@ package com.wen_wen.firstsee.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.wen_wen.firstsee.mvp.model.e.bean.LinkEntity;
 import com.wen_wen.firstsee.mvp.model.e.bean.SceneListDetail;
 import com.wen_wen.firstsee.mvp.model.e.bean.SeeEntity;
 import com.wen_wen.firstsee.mvp.model.e.bean.SentenceDetail;
 import com.wen_wen.firstsee.mvp.model.e.bean.SentenceImageText;
-import com.wen_wen.firstsee.mvp.model.e.bean.SentenceSimple;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,24 +29,21 @@ public class DocParseUtil {
      * @param result
      * @return
      */
-    public static List<SentenceSimple> parseAllarticle(String result) {
+    public static List<LinkEntity> parseLink(String result) {
 
         System.out.println(result);
         Document doc = Jsoup.parse(result);
 
         Elements rowElements = doc.getElementsByClass("views-row");
 
-        List<SentenceSimple> sentenceSimples = new ArrayList<>();
+        List<LinkEntity> linkEntityList = new ArrayList<>();
 
         if (rowElements != null) {
 
-
             for (int i = 0; i < rowElements.size(); i++) {
 
-                SentenceSimple sentenceSimple = new SentenceSimple();
-
+                LinkEntity linkEntity = new LinkEntity();
                 Element rowElement = rowElements.get(i);
-
                 // 图片
                 Elements views_field_tids = rowElement.getElementsByClass("views-field-tid");
 
@@ -54,12 +51,12 @@ public class DocParseUtil {
                     Element views_field_tid = views_field_tids.get(0);
                     if (views_field_tid != null && views_field_tid.select("img") != null && views_field_tid.select("img").size() > 0) {
                         String imgUrl = "http:" + views_field_tid.select("img").get(0).attr("src");
-                        sentenceSimple.setImgUrl(imgUrl);
+                        linkEntity.setImgUrl(imgUrl);
                     }
 
                     if (views_field_tid != null && views_field_tid.select("a") != null && views_field_tid.select("a").size() > 0) {
                         String detailUrl = "http://www.juzimi.com" + views_field_tid.select("a").get(0).attr("href");
-                        sentenceSimple.setDetailUrl(detailUrl);
+                        linkEntity.setDetailUrl(detailUrl);
                     }
                 }
 
@@ -73,7 +70,7 @@ public class DocParseUtil {
 
                     if (xqallarticletilelinkspan != null) {
                         String title = xqallarticletilelinkspan.text();
-                        sentenceSimple.setTitle(title);
+                        linkEntity.setTitle(title);
                     }
                 }
 
@@ -84,7 +81,7 @@ public class DocParseUtil {
                     if (xqagepawirdesc != null) {
 //                                    String content = xqagepawirdesc.text().replaceAll(" ", "\n");
                         String content = xqagepawirdesc.text();
-                        sentenceSimple.setContent(content);
+                        linkEntity.setContent(content);
                     }
                 }
 
@@ -94,11 +91,11 @@ public class DocParseUtil {
                     if (xqagepawirdesclink != null) {
                         // 来源、个数
                         String source_num = xqagepawirdesclink.text();
-                        sentenceSimple.setSource_num(source_num);
+                        linkEntity.setSource_num(source_num);
                     }
                 }
 
-                sentenceSimples.add(sentenceSimple);
+                linkEntityList.add(linkEntity);
             }
 
 //            System.out.println(sentenceSimples.size());
@@ -109,7 +106,7 @@ public class DocParseUtil {
 
         }
 
-        return sentenceSimples;
+        return linkEntityList;
     }
 
 

@@ -13,7 +13,7 @@ import retrofit2.http.Url;
 
 public interface Service {
     @GET("{type}")
-    Call<ResponseBody> loadAllarticle(@Path("type") String type, @Query("page") String page);
+    Call<ResponseBody> loadLink(@Path("type") String type, @Query("page") String page);
 
     @GET("{type}")
     Call<ResponseBody> loadOrignal(@Path("type") String type, @Query("page") String page);
