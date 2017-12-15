@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * 集合页面，分页 实体类
  */
-public class SceneListDetail {
+public class ListenListDetail {
 
     public String page;
 
-    public List<SentenceImageText> mImageTexts;
+    public List<ListenEntity> listenEntityList;
 }

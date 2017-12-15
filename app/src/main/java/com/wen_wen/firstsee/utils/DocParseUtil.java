@@ -3,10 +3,10 @@ package com.wen_wen.firstsee.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wen_wen.firstsee.mvp.model.e.bean.LinkEntity;
-import com.wen_wen.firstsee.mvp.model.e.bean.SceneListDetail;
+import com.wen_wen.firstsee.mvp.model.e.bean.ListenEntity;
+import com.wen_wen.firstsee.mvp.model.e.bean.ListenListDetail;
 import com.wen_wen.firstsee.mvp.model.e.bean.SeeEntity;
 import com.wen_wen.firstsee.mvp.model.e.bean.SentenceDetail;
-import com.wen_wen.firstsee.mvp.model.e.bean.SentenceImageText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -261,26 +261,26 @@ public class DocParseUtil {
     /**
      * 美图美剧
      *
-     * @param isFirst
+     * @param
      * @param result
      * @return
      */
-    public static SceneListDetail parseMeiju(boolean isFirst, String result) {
+    public static ListenListDetail parseMeiju(String result) {
 
         Document doc = Jsoup.parse(result);
 
-        SceneListDetail sceneListDetail = new SceneListDetail();
+        ListenListDetail listenListDetail = new ListenListDetail();
 
-        // 仅第一次记录页数
+        /*// 仅第一次记录页数
         if (isFirst) {
             Elements pageLasts = doc.getElementsByClass("pager-last");
             if (pageLasts != null && pageLasts.size() > 0) {
                 String page = pageLasts.first().text();
-                sceneListDetail.page = page;
+                listenListDetail.page = page;
             }
-        }
+        }*/
 
-        List<SentenceImageText> sentenceImageTexts = new ArrayList<>();
+        List<ListenEntity> listenEntityList = new ArrayList<>();
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -303,13 +303,13 @@ public class DocParseUtil {
 
 //                        LogUtils.e(jsonObject.get("text") + "  " + jsonObject.get("desc") + "  " + jsonObject.get("url") + "  " + jsonObject.get("pic"));
 
-                        SentenceImageText sentenceImageText = new SentenceImageText();
-                        sentenceImageText.setText("" + jsonObject.get("text"));
-                        sentenceImageText.setDesc("" + jsonObject.get("desc"));
-                        sentenceImageText.setUrl("" + jsonObject.get("url"));
-                        sentenceImageText.setPic("" + jsonObject.get("pic"));
+                        ListenEntity listenEntity = new ListenEntity();
+                        listenEntity.setText("" + jsonObject.get("text"));
+                        listenEntity.setDesc("" + jsonObject.get("desc"));
+                        listenEntity.setUrl("" + jsonObject.get("url"));
+                        listenEntity.setPic("" + jsonObject.get("pic"));
 
-                        sentenceImageTexts.add(sentenceImageText);
+                        listenEntityList.add(listenEntity);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -317,8 +317,8 @@ public class DocParseUtil {
                 }
             }
         }
-        sceneListDetail.mImageTexts = sentenceImageTexts;
-        return sceneListDetail;
+        listenListDetail.listenEntityList = listenEntityList;
+        return listenListDetail;
     }
 
 
@@ -328,9 +328,9 @@ public class DocParseUtil {
      * @param result
      * @return
      */
-    public static SceneListDetail parseJuziDetail(boolean isFirst, String result) {
+    public static ListenListDetail parseJuziDetail(boolean isFirst, String result) {
 
-        SceneListDetail sceneListDetail = new SceneListDetail();
+        ListenListDetail listenListDetail = new ListenListDetail();
 
         Document doc = Jsoup.parse(result);
 
@@ -339,15 +339,15 @@ public class DocParseUtil {
             Elements pageItems = doc.getElementsByClass("pager-item");
             if (pageItems != null && pageItems.last() != null) {
                 String page = pageItems.last().text();
-                sceneListDetail.page = page;
+                listenListDetail.page = page;
             } else {
-                sceneListDetail.page = null;
+                listenListDetail.page = null;
             }
         }
 
         Elements field_contents = doc.select("div.views-field-field-sns-value");
 
-        List<SentenceImageText> sentenceImageTexts = new ArrayList<>();
+        List<ListenEntity> listenEntityList = new ArrayList<>();
 
         for (int i = 0; i < field_contents.size(); i++) {
 
@@ -359,13 +359,13 @@ public class DocParseUtil {
                     try {
                         JSONObject jsonObject = new JSONObject(data);
 
-                        SentenceImageText sentenceImageText = new SentenceImageText();
-                        sentenceImageText.setText("" + jsonObject.get("text"));
-                        sentenceImageText.setDesc("" + jsonObject.get("desc"));
-                        sentenceImageText.setUrl("" + jsonObject.get("url"));
-                        sentenceImageText.setPic("" + jsonObject.get("pic"));
+                        ListenEntity listenEntity = new ListenEntity();
+                        listenEntity.setText("" + jsonObject.get("text"));
+                        listenEntity.setDesc("" + jsonObject.get("desc"));
+                        listenEntity.setUrl("" + jsonObject.get("url"));
+                        listenEntity.setPic("" + jsonObject.get("pic"));
 
-                        sentenceImageTexts.add(sentenceImageText);
+                        listenEntityList.add(listenEntity);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -374,9 +374,9 @@ public class DocParseUtil {
             }
         }
 
-        sceneListDetail.mImageTexts = sentenceImageTexts;
+        listenListDetail.listenEntityList = listenEntityList;
 
-        return sceneListDetail;
+        return listenListDetail;
 
     }
 }

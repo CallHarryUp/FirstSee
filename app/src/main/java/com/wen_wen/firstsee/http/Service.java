@@ -28,7 +28,7 @@ public interface Service {
 
     // 手写美句子
     @GET("{type}")
-    Call<ResponseBody> loadMeiju(@Path("type") String type, @Query("page") String page);
+    Call<ResponseBody> loadListen(@Path("type") String type, @Query("page") String page);
 
     // 句子详情
     @GET
