@@ -127,6 +127,7 @@
                         android:id="@+id/mian_see_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text="一见"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -135,10 +136,64 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_head"
-        app:menu="@menu/nav_menu" />
+   <LinearLayout
+       android:background="#FFFFFF"
+       android:layout_gravity="start"
+       android:orientation="vertical"
+       android:layout_width="245dp"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:background="@mipmap/nav_bg"
+           android:layout_width="match_parent"
+           android:layout_height="200dp">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:src="@mipmap/ic_launcher" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:layout_marginTop="10dp"
+               android:text="联系我哦"
+               android:textColor="#FFFFFF" />
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_marginTop="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:src="@mipmap/mode"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <TextView
+               android:textSize="20sp"
+               android:textColor="#333333"
+               android:layout_gravity="center_vertical"
+               android:text="夜间模式"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:src="@mipmap/call"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <TextView
+               android:textSize="20sp"
+               android:textColor="#333333"
+               android:layout_gravity="center_vertical"
+               android:text="联系我哦"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+   </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

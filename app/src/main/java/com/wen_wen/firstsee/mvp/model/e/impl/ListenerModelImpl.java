@@ -1,6 +1,7 @@
 package com.wen_wen.firstsee.mvp.model.e.impl;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.wen_wen.firstsee.http.Api;
 import com.wen_wen.firstsee.http.Service;
@@ -22,29 +23,51 @@ import retrofit2.Response;
  * Created by WeLot on 2017/12/15.
  */
 
-public class ListenerModelImpl  implements IListenModel {
-    private Service  service ;
-    private  Context  context ;
-    private  OnListenListener  listenListener;
+public class ListenerModelImpl implements IListenModel {
+    private Service service;
+    private Context context;
+    private OnListenListener listenListener;
+
     @Override
-    public void loadListen(Context context, String type, String page, OnListenListener listenListener) {
+    public void loadListen(Context context, boolean isFirst, String type, String page, OnListenListener listenListener) {
 
-        this.context  =  context;
-        this.listenListener  =  listenListener;
+        this.context = context;
+        this.listenListener = listenListener;
 
-        this.service  = ServiceFactory.getInstance().createService(Service.class, Api.BASE_URL_BAIWEN);
+        this.service = ServiceFactory.getInstance().createService(Service.class, Api.BASE_URL_BAIWEN);
 
-        loadListenInfo(type,page);
+        loadListenInfo(isFirst, type, page);
     }
 
-    private void loadListenInfo(String type, String page) {
-        service.loadListen(type,page).enqueue(new Callback<ResponseBody>() {
+    @Override
+    public void loadListen(Context context, boolean isFirst, String page, OnListenListener listenListener) {
+        this.context = context;
+        this.listenListener = listenListener;
+        this.service = ServiceFactory.getInstance().createService(Service.class, Api.BASE_URL_BAIWEN);
+      loadListenInfo(isFirst, null, page);
+    }
+
+    private void loadListenInfo(final boolean isFirst, String type, String page) {
+        Call<ResponseBody> call = null;
+        if (TextUtils.isEmpty(type)) {
+
+            String url = Api.BASE_URL_BAIWEN;
+            if (!TextUtils.isEmpty(page)) {
+                url = "url" + "?page" + page;
+            }
+            call = service.loadListenFirst(url);
+        } else {
+
+            call = service.loadListen(type, page);
+        }
+
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 InputStream inputStream = response.body().byteStream();
                 String string = StringUtil.inToString(inputStream);
 
-                ListenListDetail listenListDetail = DocParseUtil.parseMeiju(string);
+                ListenListDetail listenListDetail = DocParseUtil.parseMeiju(isFirst, string);
 
                 listenListener.onSuccess(listenListDetail);
             }

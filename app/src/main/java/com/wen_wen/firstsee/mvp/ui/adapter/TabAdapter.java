@@ -20,8 +20,10 @@ import static com.wen_wen.firstsee.mvp.ui.fragment.ListenChildFragment.getnstanc
 public class TabAdapter extends FragmentPagerAdapter {
     private List<String> tabList;
     private String bottomTab;
-    private  List<String> seeTypeList;
-    private  List<String> linkTypeList;
+    private List<String> seeTypeList;
+    private List<String> linkTypeList;
+    private List<String> listenTypeList;
+
     public TabAdapter(FragmentManager fm, List<String> tabList, String bottomTab) {
         super(fm);
         this.tabList = tabList;
@@ -31,15 +33,17 @@ public class TabAdapter extends FragmentPagerAdapter {
         initListenType();
 
 
-
     }
 
     private void initListenType() {
-
+        listenTypeList = new ArrayList<>();
+        listenTypeList.add(null);
+        listenTypeList.add("shouxiemeiju");
+        listenTypeList.add("jingdianduibai");
     }
 
     private void initLinkType() {
-        linkTypeList  =  new ArrayList<>();
+        linkTypeList = new ArrayList<>();
         linkTypeList.add("jingdiantaici");
         linkTypeList.add("zhaichao");
         linkTypeList.add("sanwen");
@@ -48,7 +52,7 @@ public class TabAdapter extends FragmentPagerAdapter {
     }
 
     private void initSeeType() {
-        seeTypeList  =  new ArrayList<>();
+        seeTypeList = new ArrayList<>();
         seeTypeList.add("albums");
         seeTypeList.add("newalbums");
     }
@@ -57,7 +61,7 @@ public class TabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (bottomTab.equals("listen")) {
 
-            return getnstance(tabList.get(position));
+            return getnstance(listenTypeList.get(position));
         } else if (bottomTab.equals("link")) {
 
             return LinkChildFragment.getInstance(linkTypeList.get(position));
@@ -76,7 +80,7 @@ public class TabAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-      //  super.destroyItem(container, position, object);
+        //  super.destroyItem(container, position, object);
     }
 
     @Override

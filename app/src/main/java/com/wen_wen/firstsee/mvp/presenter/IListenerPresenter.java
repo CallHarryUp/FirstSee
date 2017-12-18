@@ -7,5 +7,7 @@ import android.content.Context;
  */
 
 public interface IListenerPresenter {
-   void   loadListen(Context  context ,String type ,String page);
+    void loadListen(Context context, boolean isFirst, String type, String page);
+
+    void loadListen(Context context, boolean isFirst, String page);
 }

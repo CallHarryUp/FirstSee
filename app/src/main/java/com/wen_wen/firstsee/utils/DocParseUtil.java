@@ -166,7 +166,7 @@ public class DocParseUtil {
         for (int i = 0; i < views_field_sns_values.size(); i++) {
             Element views_field_sns_value = views_field_sns_values.get(i);
             if (views_field_sns_value != null) {
-                SeeEntity  entity  =  new SeeEntity();
+                SeeEntity entity = new SeeEntity();
 
                 Elements views_field_picture_bares = views_field_sns_value.getElementsByClass("views-field-picture-bare");
                 if (views_field_picture_bares != null && views_field_picture_bares.size() > 0) {
@@ -260,25 +260,21 @@ public class DocParseUtil {
 
     /**
      * 美图美剧
-     *
-     * @param
-     * @param result
-     * @return
      */
-    public static ListenListDetail parseMeiju(String result) {
+    public static ListenListDetail parseMeiju(boolean isFirst, String result) {
 
         Document doc = Jsoup.parse(result);
 
         ListenListDetail listenListDetail = new ListenListDetail();
 
-        /*// 仅第一次记录页数
+
         if (isFirst) {
             Elements pageLasts = doc.getElementsByClass("pager-last");
             if (pageLasts != null && pageLasts.size() > 0) {
                 String page = pageLasts.first().text();
                 listenListDetail.page = page;
             }
-        }*/
+        }
 
         List<ListenEntity> listenEntityList = new ArrayList<>();
 

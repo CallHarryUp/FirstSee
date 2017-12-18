@@ -3,6 +3,7 @@ package com.wen_wen.firstsee.mvp.ui.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,16 +45,20 @@ public class ListenAdapter extends RecyclerView.Adapter<ListenAdapter.ListenView
     @Override
     public void onBindViewHolder(final ListenViewHolder holder, int position) {
         ListenEntity listenEntity = listenEntityList.get(position);
-
         if (listenEntity != null) {
             Glide.with(context)
-                    .load(listenEntity.getUrl())
+                    .load(listenEntity.getPic())
                     .asBitmap()
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(holder.cover);
+            if (listenEntity.getDesc().isEmpty()||listenEntity.getDesc().trim().length()==0) {
+                Log.d("111","Desc"+listenEntity.getDesc());
 
-            holder.content.setText(listenEntity.getDesc());
+                holder.content.setVisibility(View.GONE);
+            } else {
+                holder.content.setText(listenEntity.getDesc());
+            }
             holder.listen_card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -94,7 +99,7 @@ public class ListenAdapter extends RecyclerView.Adapter<ListenAdapter.ListenView
     public static class ListenViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.listen_card_cover)
         ImageView cover;
-        @BindView(R.id.link_card_content)
+        @BindView(R.id.listen_card_content)
         TextView content;
         @BindView(R.id.listen_card)
         CardView listen_card;

@@ -10,5 +10,7 @@ import com.wen_wen.firstsee.mvp.presenter.callback.OnListenListener;
 
 public interface IListenModel {
 
-    void   loadListen(Context  context, String type , String page , OnListenListener  listenListener);
+    void loadListen(Context context, boolean isFirst, String type, String page, OnListenListener listenListener);
+
+    void loadListen(Context context, boolean isFirst, String page, OnListenListener listenListener);
 }

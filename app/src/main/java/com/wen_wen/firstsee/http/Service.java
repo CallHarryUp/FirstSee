@@ -16,17 +16,11 @@ public interface Service {
     Call<ResponseBody> loadLink(@Path("type") String type, @Query("page") String page);
 
     @GET("{type}")
-    Call<ResponseBody> loadOrignal(@Path("type") String type, @Query("page") String page);
-
-
-    @GET("{type}")
     Call<ResponseBody> loadSee(@Path("type") String type, @Query("page") String page);
 
-    // 美图美句子
     @GET
-    Call<ResponseBody> loadMeiju(@Url String url);
+    Call<ResponseBody> loadListenFirst(@Url String url);
 
-    // 手写美句子
     @GET("{type}")
     Call<ResponseBody> loadListen(@Path("type") String type, @Query("page") String page);
 
