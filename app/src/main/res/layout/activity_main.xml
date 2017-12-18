@@ -5,6 +5,7 @@
     android:id="@+id/main_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.wen_wen.firstsee.mvp.ui.activity.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
@@ -135,22 +136,26 @@
         </android.support.v7.widget.CardView>
 
     </android.support.design.widget.CoordinatorLayout>
-
    <LinearLayout
-       android:background="#FFFFFF"
-       android:layout_gravity="start"
+       android:fitsSystemWindows="true"
+    android:layout_gravity="start"
+
+    android:background="#FFFFFF"
        android:orientation="vertical"
        android:layout_width="245dp"
        android:layout_height="match_parent">
        <LinearLayout
+           android:gravity="center"
+           android:orientation="vertical"
            android:background="@mipmap/nav_bg"
            android:layout_width="match_parent"
            android:layout_height="200dp">
            <ImageView
+
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_gravity="center_horizontal"
-               android:src="@mipmap/ic_launcher" />
+               android:layout_gravity="center"
+               android:src="@mipmap/me_2" />
 
            <TextView
                android:layout_width="wrap_content"
@@ -158,42 +163,34 @@
                android:layout_gravity="center_horizontal"
                android:layout_marginTop="10dp"
                android:text="联系我哦"
+               android:textSize="18sp"
                android:textColor="#FFFFFF" />
 
        </LinearLayout>
-       <LinearLayout
+       <RelativeLayout
+           android:layout_marginLeft="10dp"
            android:layout_marginTop="20dp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
-           <ImageView
-               android:src="@mipmap/mode"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+
            <TextView
-               android:textSize="20sp"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="5dp"
+               android:textSize="18sp"
                android:textColor="#333333"
-               android:layout_gravity="center_vertical"
                android:text="夜间模式"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
-       </LinearLayout>
 
-       <LinearLayout
-           android:layout_marginTop="10dp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <ImageView
-               android:src="@mipmap/call"
+           <Switch
+               android:layout_centerVertical="true"
+               android:layout_marginRight="10dp"
+               android:layout_alignParentRight="true"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-           <TextView
-               android:textSize="20sp"
-               android:textColor="#333333"
-               android:layout_gravity="center_vertical"
-               android:text="联系我哦"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-       </LinearLayout>
+               android:layout_height="10dp" />
+       </RelativeLayout>
+
+
 
    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

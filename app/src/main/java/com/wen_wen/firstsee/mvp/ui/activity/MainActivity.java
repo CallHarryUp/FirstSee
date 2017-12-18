@@ -16,6 +16,7 @@ import com.wen_wen.firstsee.mvp.ui.callback.OnScrollYListener;
 import com.wen_wen.firstsee.mvp.ui.fragment.LinkFragment;
 import com.wen_wen.firstsee.mvp.ui.fragment.ListenFragment;
 import com.wen_wen.firstsee.mvp.ui.fragment.SeeFragment;
+import com.wen_wen.firstsee.utils.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements OnScrollYListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatusBarUtil.addStatusView(this);
         ButterKnife.bind(this);
         initView();
     }
