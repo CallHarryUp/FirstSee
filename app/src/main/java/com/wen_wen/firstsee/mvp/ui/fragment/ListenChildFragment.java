@@ -43,7 +43,7 @@ public class ListenChildFragment extends BaseFragment implements IListenView {
     private String type;
     private boolean isRefresh = false;
     private boolean isFirst = true;
-
+    private   boolean  isScroll  = true;//禁止在请求网络过程中page重复增加
     public ListenChildFragment() {
     }
 
@@ -83,7 +83,7 @@ public class ListenChildFragment extends BaseFragment implements IListenView {
         listenSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                page  =  null;
                 requestListen();
                 isRefresh = true;
 
@@ -119,8 +119,10 @@ public class ListenChildFragment extends BaseFragment implements IListenView {
 
     private void requestListen() {
         if (TextUtils.isEmpty(type)) {
+
             listenPresenter.loadListen(getContext(), isFirst, page);
         } else {
+
             listenPresenter.loadListen(getContext(), isFirst, type, page);
         }
 
@@ -128,6 +130,7 @@ public class ListenChildFragment extends BaseFragment implements IListenView {
 
     @Override
     public void onSuccess(ListenListDetail listenListDetail) {
+
         if (page == null) {
             page = "1";
         } else {
@@ -136,7 +139,7 @@ public class ListenChildFragment extends BaseFragment implements IListenView {
             page = String.valueOf(I_page);
         }
         if (isRefresh == true) {
-            page = null;
+
             listenListDetail.listenEntityList.clear();
             listenListDetail.page = null;
             isRefresh = false;

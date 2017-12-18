@@ -53,7 +53,7 @@ public class ListenerModelImpl implements IListenModel {
 
             String url = Api.BASE_URL_BAIWEN;
             if (!TextUtils.isEmpty(page)) {
-                url = "url" + "?page" + page;
+                url = url + "?page=" + page;
             }
             call = service.loadListenFirst(url);
         } else {
